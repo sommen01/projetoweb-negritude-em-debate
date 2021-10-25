@@ -1,0 +1,173 @@
+body{
+    background-color: #F29063;
+    width: 100%;
+    height: 100%;
+
+/* Inicio Background-Animado */
+    background-position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    animation: slideNd 30s linear infinite 0s;
+    animation-timing-function: ease-in-out;
+    background-image:url('../img/1.png');
+}
+
+
+@keyframes slideNd {
+    0%{
+        background-image:url('../img/1.png');
+    }
+    25% {
+        background-image:url('../img/2.jpg');
+    }
+    50% {
+        background-image:url('../img/3.jpg');
+    }
+    75% {
+        background-image:url('../img/6.jpg');
+    }
+    90% {
+        background-image:url('../img/4.png');
+    }
+}
+/* Fim Background-Animado */
+
+#Slide{
+    padding: 10px;
+}
+
+h2{
+    text-align: center;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+textarea{
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+}
+/* Inicio area total form */
+#formGeral{
+    background-color: #E0722A;
+    padding: auto;
+    padding-right : 50px;
+    padding-bottom : 50px;
+    padding-left : 50px;
+    opacity: 0.8;
+    border-radius: 5px;
+    border-color: #260101;
+    border-style: groove;
+    font-family: 'Piedra', cursive;
+}
+/* Fim area total form */
+
+.tab-content{
+    
+    border-radius: 5px;
+   
+    border-style:inset;
+    background-color: #F6986C;
+    padding: auto;
+    
+    
+}
+
+/* Inicio titulo Form */
+.container{
+    padding: 10px;
+    font-style:inherit;
+}
+/* Fim titulo form */
+
+/* Inicio form login */
+.imgcontainer{
+    float: left;
+    width: 200px;
+    margin: 10px;
+    position: relative;
+    text-align: center;
+    padding-right:250px ;
+}
+.login{
+    float: right;
+    position: relative;
+    width: 60%;
+   
+    
+    
+}
+.holder {
+    display: flex;
+    justify-content: center;
+}
+/* Obs: Ajustar o Flex box 
+    Fim Form Login */
+    
+/* Inicio botoes prox/submit */
+.div-botao{
+    padding-top: 10px;
+}
+.btn-primary {
+   background-color: #881A00;
+   border-color:#260101
+   
+}
+
+.btn-primary:hover {
+    background-color: #881A00;
+    border-color:#260101;
+    transition: 0.5s;
+    opacity: 0.7;
+ }
+
+/* Fim botoes prox/submit */
+
+/* Inicio botoes trocar form */
+#dados-pessoais-tab,#autorizacao-tab {
+    background-color: #881A00;
+    border-color:white; 
+   
+  
+}
+.div-tab{
+    padding: 10px;
+}
+li{
+    width: 50%;
+}
+
+[role="tab"] {
+    text-align: center;
+   
+    padding: 5px;
+    background-color: #881A00;
+    border-color:#260101;
+    color: white;
+    cursor: default;
+  }
+[role="tab"][aria-selected="false"] {
+    color: #F29063; 
+}
+
+
+.nav-item:hover {
+    background-color: #881A00;
+    border-color:#260101;
+    transition: 0.5s;
+    opacity: 0.7;
+    
+ }
+ 
+
+.div-autorizacao{
+    padding-top: 10px;
+}
+
+/* Fim botoes trocar form */
+
+
+
+
+
+	
+	
