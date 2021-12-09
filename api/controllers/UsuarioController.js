@@ -1,6 +1,7 @@
 const database = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const CHAVE_JWT="a/KeyBW7JqD++rTxKjX0hobwsH0GZpG2fsUDcvBrSRooLZbpIsxbCErAwFCStgZydGCRuYLiLFGRaBM6GM/FaRmSaAVw0yEeAyH1j0qoYdMh/BukSKKjvyLV9poMg7tD5tx7E8QI/7Fuf8uOS04kTMMavDBfNQUywhaF9c1jByIR9CAh6LHMf6G1OXCpUjlcVd+GwRc9qC20mAIA2MgD0PmN8w2AkMKm3WwMpOuQ/EgFTHQTSq1/1lrnjE4OTNHtmiadYoc7CWgMmoGW2dKFdw/GNNkJ7ZkYaMHe1HTOJ3xjB/jC4q/tiJcjbhdadscsQPa7br/evDcGGezmQX9pnQ==";
 
 class UsuarioController {
 
@@ -61,6 +62,7 @@ class UsuarioController {
             await database.Usuarios.update(novasInfosUsuario, { where: { id: Number(id) } });
             const usuarioAtualizado = await database.Usuarios.findOne( { where: { id: Number(id) } });
             return res.status(200).json(usuarioAtualizado);
+            
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -96,7 +98,22 @@ class UsuarioController {
     }
 
     static async verificaSenha(senha, senhaHash){
-        const senhaValida = await bcrypt.compare(senha, senhaHash);
+        
+        var MD5 = require("crypto-js/md5");
+        const hash = MD5(senha).toString()
+        console.log(hash);
+        let senhaValida = false;
+        console.log(senhaHash);
+        if(hash === senhaHash){
+             senhaValida = true;
+             console.log('mama2');
+        }
+       
+        console.log(hash);
+        console.log(senhaHash);
+        console.log(senhaValida);
+        console.log('mama3');
+      
         if (!senhaValida)
             throw new Error("Senha inválida!");
     }
@@ -104,13 +121,19 @@ class UsuarioController {
     static async login(req, res) {
         const { email } = req.body;
         const { senha } = req.body;
+        
         try{
             const usuario = await UsuarioController.pegaUmUsuarioPorEmail(email);
             UsuarioController.verificaUsuario(usuario);
-            await UsuarioController.verificaSenha(senha,usuario.senha_hash);
-            const token = jwt.sign({ id: usuario.id }, process.env.CHAVE_JWT, { expiresIn: '15m' });
+            await UsuarioController.verificaSenha(senha, usuario.senha_hash);
+            console.log('mama4');
+            console.log(CHAVE_JWT);
+            const token = jwt.sign({ id: usuario.id }, CHAVE_JWT, { expiresIn: '15m' });
+            console.log('mama5');
             res.set('Authorization', token);
-            return res.status(200).json(usuario); 
+            console.log('mama');
+            return  res.redirect('/logado'); 
+            
         } catch (error) {
             return res.status(401).json(error.message);
         }

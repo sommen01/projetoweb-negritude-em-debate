@@ -6,7 +6,7 @@ const albuns = require('./albunsRoute');
 const usuarios = require('./usuariosRoute');
 
 module.exports = (app) => {
-  app.get('/', (request, response) => {
+  app.get('/cadastro_foto', (request, response) => {
     response.render('albuns');
   });
 

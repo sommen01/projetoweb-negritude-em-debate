@@ -1,4 +1,5 @@
 //Automaticamente ele encontra o arquivo index.js dentro da pasta
+const { render } = require('..');
 const database = require('../models');
 
 /**
@@ -33,10 +34,11 @@ const database = require('../models');
 
     static async criaAlbum(req, res) {
         const novoAlbum = req.body;
+        
         console.log(req.body);
         try{
             const novoAlbumCriado = await database.Albuns.create(novoAlbum);
-            return res.status(200).json(novoAlbumCriado);
+            return res.render('albuns');
         } catch (error) {
             return res.status(500).json(error.message);
         }

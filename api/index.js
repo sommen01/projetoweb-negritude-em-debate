@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-import path from 'path'
+const path = require('path')
+
 require('dotenv').config()
 //http://expressjs.com/en/resources/middleware/cors.html
 const cors = require('cors');
@@ -29,17 +30,20 @@ app.listen(PORTA, function () {
 })
 
 /**
+  * Configurações das páginas
+  */
+ app.set('views', path.join(__dirname,'views'))
+ app.set('view engine','pug')
+ app.use(express.static(path.join(__dirname, 'static')));
+ app.use('/uploads', express.static(path.join(__dirname, '../uploads/')));
+
+/**
  * Rotas
  */
  routes(app);
 
 
- /**
-  * Configurações das páginas
-  */
-app.set('views', path.join(__dirname,'views'))
-app.set('view engine','pug')
-
+ 
 
 // app.set('views', path.join(__dirname, './views'));
 // app.set('view engine','ejs');
