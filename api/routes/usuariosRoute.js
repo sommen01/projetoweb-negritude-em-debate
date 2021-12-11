@@ -12,7 +12,21 @@ router.get('/logado', (request, response) => {
     // response.sendFile(path.join(__dirname, '../../pages/html/album_form.html');
     response.render('relatorio');
 });
+
+router.get('/index', (request, response) => {
+  // response.sendFile(path.join(__dirname, '../../pages/html/album_form.html');
+  response.render('index');
+});
+router.get('/equipe', (request, response) => {
+  // response.sendFile(path.join(__dirname, '../../pages/html/album_form.html');
+  response.render('equipe');
+});
+router.get('/logout', (request, response) => {
+  // response.sendFile(path.join(__dirname, '../../pages/html/album_form.html');
+  router.post('/login',  UsuarioController.logout);
+});
   
+
 router.get('/usuarios', UsuarioController.pegaTodosOsUsuarios);
 router.get('/usuarios/:id', UsuarioController.pegaUmUsuario);
 router.post('/usuarios', UsuarioController.criaUsuario);

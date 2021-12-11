@@ -106,13 +106,12 @@ class UsuarioController {
         console.log(senhaHash);
         if(hash === senhaHash){
              senhaValida = true;
-             console.log('mama2');
         }
        
         console.log(hash);
         console.log(senhaHash);
         console.log(senhaValida);
-        console.log('mama3');
+      
       
         if (!senhaValida)
             throw new Error("Senha inválida!");
@@ -125,19 +124,19 @@ class UsuarioController {
         try{
             const usuario = await UsuarioController.pegaUmUsuarioPorEmail(email);
             UsuarioController.verificaUsuario(usuario);
-            await UsuarioController.verificaSenha(senha, usuario.senha_hash);
-            console.log('mama4');
+            await UsuarioController.verificaSenha(senha, usuario.senha_hash);       
             console.log(CHAVE_JWT);
-            const token = jwt.sign({ id: usuario.id }, CHAVE_JWT, { expiresIn: '15m' });
-            console.log('mama5');
-            res.set('Authorization', token);
-            console.log('mama');
+            const token = jwt.sign({ id: usuario.id }, CHAVE_JWT, { expiresIn: '15m' });    
+            res.set('Authorization', token);  
             return  res.redirect('/logado'); 
             
         } catch (error) {
             return res.status(401).json(error.message);
         }
     }
+    static async logout(req, res) {
+        
+        }
 
 }
 

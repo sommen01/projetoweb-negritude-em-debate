@@ -1,7 +1,7 @@
- include header.pug
+  include headerLogado.pug
 
 block css
-  link(rel="stylesheet", href="styles/relatorio.css", type="text/css")
+  link(rel="stylesheet" href="styles/relatorio.css" type="text/css")
 
 block main 
   main 
@@ -48,3 +48,5 @@ block main
             = albuns.dataValues.createdAt 
           li Frase
           li Autorização
+
+include footer.pug
